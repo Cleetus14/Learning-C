@@ -2,21 +2,23 @@
 
 int main() {
 
-	int testScore;
+	int number;
 
-	printf("What grade did you get on your test?: ");
-	scanf_s("%d", &testScore);
+	printf("Enter a number: ");
+	scanf_s("%d", &number);
 
-	if (testScore >= 90) {
-		printf("Excellent!");
+	if (number > 0) {
+		printf("This number is positive.\n");
 	}
-	else if (testScore >= 80) {
-		printf("Great job!");
+	else if (number < 0) {
+		printf("This number is negative\n");
 	}
-	else if (testScore >= 70) {
-		printf("Good work!");
+	else {
+		printf("This number is zero.\n");
 	}
-	else if (testScore <= 69) {
-		printf("Keep practicing!");
+
+	if (number % 2 == 0) {
+		printf("This number is even.");
 	}
-} 
+	else (printf("This number is odd"));
+}
