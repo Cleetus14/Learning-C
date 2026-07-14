@@ -2,31 +2,24 @@
 
 int main() {
 
-	float weight;
-	float height;
-	float BMI;
+	int age;
 
-	printf("Enter your weight (kg): ");
-	scanf_s("%f", &weight);
+	printf("Enter your age:  ");
+	scanf_s("%d", &age);
 
-	printf("Enter your height (m): ");
-	scanf_s("%f", &height);
-
-	BMI = weight / (height * height);
-
-	printf("Your BMI is: %.2f\n", BMI);
-
-	if (BMI < 18.5) {
-		printf("You are underweight.");
+	if (age < 0) {
+		printf("Please enter a valid age");
 	}
-	else if (BMI >= 30) {
-		printf("You are obese.");
+	else if (age >= 0 && age <= 12) {
+		printf("You are a child.");
 	}
-	else if (BMI >= 25) {
-		printf("You are overweight.");
+	else if (age >= 13 && age <= 17) {
+		printf("You are a teenager");
 	}
-	else (printf("You have a normal and healthy weight.")); {
+	else if (age >= 18 && age <= 64) {
+		printf("You are an adult");
 	}
+	else printf("You are a senior.");
 
 	return 0;
 }
