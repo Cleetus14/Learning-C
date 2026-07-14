@@ -1,30 +1,18 @@
 #include <stdio.h>
 
-int main()
-{
-    char name[50];
-    int age;
-    char favoriteProgrammingLanguage[50];
-    int favoriteNumber;
+int main() {
 
-    printf("Enter Your Name: ");
-    scanf_s("%s", name, 50);
+	float mealPrice, tip, totalPrice;
 
-    printf("Enter Your Age: ");
-    scanf_s("%d", &age);
+	printf("Enter the price of your meal: $");
+	scanf_s("%f", &mealPrice);
 
-    printf("Enter Your Favorite Programming Language: ");
-    scanf_s("%s", favoriteProgrammingLanguage, 50);
+	tip = mealPrice * 0.15f;
+	totalPrice = mealPrice + tip;
 
-    printf("Enter Your Favorite Number: ");
-    scanf_s("%d", &favoriteNumber);
+	printf("The tip required with your meal is: $%.2f\n", tip);
+	printf("The total price of your meal is: $%.2f\n", totalPrice);
 
-    printf("\n--- Interview Results ---\n");
+	return 0;
 
-    printf("Name: %s\n", name);
-    printf("Age: %d\n", age);
-    printf("Favorite Programming Language: %s\n", favoriteProgrammingLanguage);
-    printf("Favorite Number: %d\n", favoriteNumber);
-
-    return 0;
 }
