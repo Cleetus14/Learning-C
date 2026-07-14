@@ -2,23 +2,31 @@
 
 int main() {
 
-	int number;
+	float weight;
+	float height;
+	float BMI;
 
-	printf("Enter a number: ");
-	scanf_s("%d", &number);
+	printf("Enter your weight (kg): ");
+	scanf_s("%f", &weight);
 
-	if (number > 0) {
-		printf("This number is positive.\n");
+	printf("Enter your height (m): ");
+	scanf_s("%f", &height);
+
+	BMI = weight / (height * height);
+
+	printf("Your BMI is: %.2f\n", BMI);
+
+	if (BMI < 18.5) {
+		printf("You are underweight.");
 	}
-	else if (number < 0) {
-		printf("This number is negative\n");
+	else if (BMI >= 30) {
+		printf("You are obese.");
 	}
-	else {
-		printf("This number is zero.\n");
+	else if (BMI >= 25) {
+		printf("You are overweight.");
+	}
+	else (printf("You have a normal and healthy weight.")); {
 	}
 
-	if (number % 2 == 0) {
-		printf("This number is even.");
-	}
-	else (printf("This number is odd"));
+	return 0;
 }
