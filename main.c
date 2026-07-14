@@ -2,17 +2,19 @@
 
 int main() {
 
-	float mealPrice, tip, totalPrice;
+	float weight;
+	float height;
+	float BMI;
 
-	printf("Enter the price of your meal: $");
-	scanf_s("%f", &mealPrice);
+	printf("Enter your weight (kg): ");
+	scanf_s("%f", &weight);
 
-	tip = mealPrice * 0.15f;
-	totalPrice = mealPrice + tip;
+	printf("Enter your height (m): ");
+	scanf_s("%f", &height);
 
-	printf("The tip required with your meal is: $%.2f\n", tip);
-	printf("The total price of your meal is: $%.2f\n", totalPrice);
+	BMI = weight / (height * height);
+
+	printf("Your BMI is: %.2f\n", BMI);
 
 	return 0;
-
 }
