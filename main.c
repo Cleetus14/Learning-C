@@ -1,25 +1,53 @@
 #include <stdio.h>
 
-int main() {
+int main()
+{
+	float firstNumber;
+	char operation;
+	float secondNumber;
+	float result = 0;
 
-	int age;
+	printf("Enter first number: ");
+	scanf_s("%f", &firstNumber);
 
-	printf("Enter your age:  ");
-	scanf_s("%d", &age);
+	printf("Enter an operator: ");
+	scanf_s(" %c", &operation, 1);
 
-	if (age < 0) {
-		printf("Please enter a valid age");
+	printf("Enter second number: ");
+	scanf_s("%f", &secondNumber);
+
+	switch (operation)
+	{
+	case '+':
+		result = firstNumber + secondNumber;
+		break;
+
+	case '-':
+		result = firstNumber - secondNumber;
+		break;
+
+	case '*':
+		result = firstNumber * secondNumber;
+		break;
+
+	case '/':
+		if (secondNumber == 0)
+		{
+			printf("Cannot divide by zero.");
+			return 1;
+		}
+		else
+		{
+			result = firstNumber / secondNumber;
+		}
+		break;
+
+	default:
+		printf("Invalid operator. (Could also be an invalid number)");
+		return 1;
 	}
-	else if (age >= 0 && age <= 12) {
-		printf("You are a child.");
-	}
-	else if (age >= 13 && age <= 17) {
-		printf("You are a teenager");
-	}
-	else if (age >= 18 && age <= 64) {
-		printf("You are an adult");
-	}
-	else printf("You are a senior.");
+
+	printf("Result: %.3f\n", result);
 
 	return 0;
 }
