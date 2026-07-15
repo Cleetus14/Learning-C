@@ -1,70 +1,88 @@
 #include <stdio.h>
 
-void openMenu()
+int isEven(int number)
 {
-    printf("===== Temperature Converter =====\n");
-    printf("1. Celsius to Fahrenheit\n");
-    printf("2. Fahrenheit to Celsius\n");
-    printf("Choose an option: ");
+    if (number % 2 == 0)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
 }
 
-int readOption()
+int checkSign(int number)
 {
-    int option;
-
-    scanf_s("%d", &option);
-
-    return option;
+    if (number > 0)
+    {
+        return 1;
+    }
+    else if (number < 0)
+    {
+        return -1;
+    }
+    else
+    {
+        return 0;
+    }
 }
 
-float readTemperature()
+int square(int number)
 {
-    float temperature;
-
-    printf("Enter the temperature: ");
-    scanf_s("%f", &temperature);
-
-    return temperature;
+    return number * number;
 }
 
-float celsiusToFahrenheit(float celsius)
+int max(int firstNumber, int secondNumber)
 {
-    return (celsius * 9.0f / 5.0f) + 32.0f;
-}
-
-float fahrenheitToCelsius(float fahrenheit)
-{
-    return (fahrenheit - 32.0f) * 5.0f / 9.0f;
+    if (firstNumber > secondNumber)
+    {
+        return firstNumber;
+    }
+    else
+    {
+        return secondNumber;
+    }
 }
 
 int main()
 {
-    int option;
-    float temperature;
-    float result;
+    int firstNumber;
+    int secondNumber;
 
-    openMenu();
+    printf("Enter first number: ");
+    scanf_s("%d", &firstNumber);
 
-    option = readOption();
-
-    temperature = readTemperature();
-
-    switch (option)
+    if (isEven(firstNumber))
     {
-    case 1:
-        result = celsiusToFahrenheit(temperature);
-        printf("Result: %.2f F\n", result);
-        break;
-
-    case 2:
-        result = fahrenheitToCelsius(temperature);
-        printf("Result: %.2f C\n", result);
-        break;
-
-    default:
-        printf("Invalid option.\n");
-        return 1;
+        printf("The number is even.\n");
     }
+    else
+    {
+        printf("The number is odd.\n");
+    }
+
+    int sign = checkSign(firstNumber);
+
+    if (sign == 1)
+    {
+        printf("The number is positive.\n");
+    }
+    else if (sign == -1)
+    {
+        printf("The number is negative.\n");
+    }
+    else
+    {
+        printf("The number is zero.\n");
+    }
+
+    printf("Square: %d\n", square(firstNumber));
+
+    printf("\nEnter second number: ");
+    scanf_s("%d", &secondNumber);
+
+    printf("Larger number: %d\n", max(firstNumber, secondNumber));
 
     return 0;
 }
