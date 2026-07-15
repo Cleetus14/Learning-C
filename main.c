@@ -2,52 +2,74 @@
 
 int main()
 {
-	float firstNumber;
-	char operation;
-	float secondNumber;
-	float result = 0;
+	float balance = 1000.00;
+	char option;
+	float amountToDeposit = 0;
+	float amountToWithdraw = 0;
+	float newBalance = 0;
+	int pin = 1234;
 
-	printf("Enter first number: ");
-	scanf_s("%f", &firstNumber);
+	printf("Enter your pin to access your bank account: ");
+	scanf_s("%d", &pin);
 
-	printf("Enter an operator: ");
-	scanf_s(" %c", &operation, 1);
-
-	printf("Enter second number: ");
-	scanf_s("%f", &secondNumber);
-
-	switch (operation)
+	if (pin == 1234)
 	{
-	case '+':
-		result = firstNumber + secondNumber;
-		break;
+		printf("===== Bank Account =====\n");
+		printf("1. Check Balance\n");
+		printf("2. Deposit Money\n");
+		printf("3. Withdraw Money\n");
+		printf("4. Exit\n");
 
-	case '-':
-		result = firstNumber - secondNumber;
-		break;
-
-	case '*':
-		result = firstNumber * secondNumber;
-		break;
-
-	case '/':
-		if (secondNumber == 0)
-		{
-			printf("Cannot divide by zero.");
-			return 1;
-		}
-		else
-		{
-			result = firstNumber / secondNumber;
-		}
-		break;
-
-	default:
-		printf("Invalid operator. (Could also be an invalid number)");
+		printf("Choose an option: \n");
+		scanf_s(" %c", &option, 1);
+	}
+	else
+	{
+		printf("Wrong Pin!\n");
+		printf("Try Again!\n");
 		return 1;
 	}
 
-	printf("Result: %.3f\n", result);
+	switch (option)
+	{
+	case '1':
+		printf("Your current balance is: $%.2f", balance);
+		break;
+
+	case '2':
+		printf("Enter an amount to deposit: $");
+		scanf_s("%f", &amountToDeposit);
+
+		if (amountToDeposit <= 0)
+		{
+			printf("Invalid amount.");
+		}
+		else {
+			newBalance = balance + amountToDeposit;
+			printf("New Balance: $%.2f", newBalance);
+			break;
+		}
+
+	case '3':
+		printf("Enter amount to withdraw: $");
+		scanf_s("%f", &amountToWithdraw);
+		if (amountToWithdraw > balance)
+		{
+			printf("Insufficient funds.");
+		}
+		else if (amountToWithdraw <= balance)
+		{
+			newBalance = balance - amountToWithdraw;
+			printf("New Balance: $%.2f", newBalance);
+			break;
+		}
+	case '4':
+		printf("Thank you for using the bank simulator. Have a good day!");
+		break;
+	
+	default:
+		printf("Invalid option.");
+	}
 
 	return 0;
 }
