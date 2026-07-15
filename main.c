@@ -1,69 +1,70 @@
 #include <stdio.h>
 
-float add(float x, float y) {
-	return x + y;
+void openMenu()
+{
+    printf("===== Temperature Converter =====\n");
+    printf("1. Celsius to Fahrenheit\n");
+    printf("2. Fahrenheit to Celsius\n");
+    printf("Choose an option: ");
 }
 
-float subtract(float x, float y) {
-	return x - y;
+int readOption()
+{
+    int option;
+
+    scanf_s("%d", &option);
+
+    return option;
 }
 
-float multiply(float x, float y) {
-	return x * y;
+float readTemperature()
+{
+    float temperature;
+
+    printf("Enter the temperature: ");
+    scanf_s("%f", &temperature);
+
+    return temperature;
 }
 
-float divide(float x, float y) {
-	return x / y;
+float celsiusToFahrenheit(float celsius)
+{
+    return (celsius * 9.0f / 5.0f) + 32.0f;
+}
+
+float fahrenheitToCelsius(float fahrenheit)
+{
+    return (fahrenheit - 32.0f) * 5.0f / 9.0f;
 }
 
 int main()
 {
-	float firstNumber;
-	float secondNumber;
-	float result;
-	char operation;
+    int option;
+    float temperature;
+    float result;
 
-	printf("Enter first number: ");
-	scanf_s("%f", &firstNumber);
+    openMenu();
 
-	printf("Enter an operator (+, -, *, /): ");
-	scanf_s(" %c", &operation, 1);
+    option = readOption();
 
-	printf("Enter second number: ");
-	scanf_s("%f", &secondNumber);
+    temperature = readTemperature();
 
-	switch (operation)
-	{
-	case '+':
-		result = add(firstNumber, secondNumber);
-		printf("Result: %.3f\n", result);
-		break;
+    switch (option)
+    {
+    case 1:
+        result = celsiusToFahrenheit(temperature);
+        printf("Result: %.2f F\n", result);
+        break;
 
-	case '-':
-		result = subtract(firstNumber, secondNumber);
-		printf("Result: %.3f\n", result);
-		break;
+    case 2:
+        result = fahrenheitToCelsius(temperature);
+        printf("Result: %.2f C\n", result);
+        break;
 
-	case '*':
-		result = multiply(firstNumber, secondNumber);
-		printf("Result: %.3f\n", result);
-		break;
+    default:
+        printf("Invalid option.\n");
+        return 1;
+    }
 
-	case '/':
-		if (secondNumber == 0)
-		{
-			printf("Cannot divide by zero.\n");
-			return 1;
-		}
-
-		result = divide(firstNumber, secondNumber);
-		printf("Result: %.3f\n", result);
-		break;
-
-	default:
-		printf("Invalid operator.\n");
-		return 1;
-	}
-
-	return 0;
+    return 0;
 }
