@@ -1,22 +1,26 @@
 #include <stdio.h>
 
-void spawnMultiplicationTable() {
-    int number = 0;
-    int otherNumber = 0;
-    int answer;
+void generatePattern() {
+    
+    int size = 0;
+    int row = 0;
+    int pattern = 0;
 
-    printf("Enter a number: ");
-    scanf_s("%d", &number);
+    printf("Enter a size: ");
+    scanf_s("%d", &size);
 
-    for (otherNumber = 1; otherNumber <= 12; otherNumber++) {
-        answer = number * otherNumber;
-        printf("%d x %d = %d\n", number, otherNumber, answer);
+    for (row = 1; row <= size; row++)
+    {
+        for (pattern = 1; pattern <= row; pattern++) {
+            printf("*");
+        }
+        printf("\n");
     }
 }
 
 int main() {
 
-    spawnMultiplicationTable();
+    generatePattern();
 
     return 0;
 }
