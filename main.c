@@ -1,88 +1,37 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
-int isEven(int number)
-{
-    if (number % 2 == 0)
-    {
-        return 1;
-    }
-    else
-    {
-        return 0;
-    }
-}
+void playGame(int randomNum) {
+    int guess = 0;
+    int attempts = 0;
 
-int checkSign(int number)
-{
-    if (number > 0)
-    {
-        return 1;
-    }
-    else if (number < 0)
-    {
-        return -1;
-    }
-    else
-    {
-        return 0;
-    }
-}
+    printf("===== Number Guessing Game =====\n\n");
 
-int square(int number)
-{
-    return number * number;
-}
+    while (1) {
+        printf("Guess a number between 1 and 50: ");
+        scanf_s("%d", &guess);
+        attempts++;
 
-int max(int firstNumber, int secondNumber)
-{
-    if (firstNumber > secondNumber)
-    {
-        return firstNumber;
-    }
-    else
-    {
-        return secondNumber;
+        if (guess < randomNum) {
+            printf("Too low!\n");
+        }
+        else if (guess > randomNum) {
+            printf("Too high!\n");
+        }
+        else {
+            printf("Correct!\n");
+            printf("You guessed the number in %d attempts!\n", attempts);
+            break;
+        }
     }
 }
 
-int main()
-{
-    int firstNumber;
-    int secondNumber;
+int main() {
+    srand(time(NULL));
+    int randomNum = rand() % 50 + 1;
 
-    printf("Enter first number: ");
-    scanf_s("%d", &firstNumber);
-
-    if (isEven(firstNumber))
-    {
-        printf("The number is even.\n");
-    }
-    else
-    {
-        printf("The number is odd.\n");
-    }
-
-    int sign = checkSign(firstNumber);
-
-    if (sign == 1)
-    {
-        printf("The number is positive.\n");
-    }
-    else if (sign == -1)
-    {
-        printf("The number is negative.\n");
-    }
-    else
-    {
-        printf("The number is zero.\n");
-    }
-
-    printf("Square: %d\n", square(firstNumber));
-
-    printf("\nEnter second number: ");
-    scanf_s("%d", &secondNumber);
-
-    printf("Larger number: %d\n", max(firstNumber, secondNumber));
+    playGame(randomNum);
 
     return 0;
 }
