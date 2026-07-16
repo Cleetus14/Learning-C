@@ -1,37 +1,22 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
 
-void playGame(int randomNum) {
-    int guess = 0;
-    int attempts = 0;
+void spawnMultiplicationTable() {
+    int number = 0;
+    int otherNumber = 0;
+    int answer;
 
-    printf("===== Number Guessing Game =====\n\n");
+    printf("Enter a number: ");
+    scanf_s("%d", &number);
 
-    while (1) {
-        printf("Guess a number between 1 and 50: ");
-        scanf_s("%d", &guess);
-        attempts++;
-
-        if (guess < randomNum) {
-            printf("Too low!\n");
-        }
-        else if (guess > randomNum) {
-            printf("Too high!\n");
-        }
-        else {
-            printf("Correct!\n");
-            printf("You guessed the number in %d attempts!\n", attempts);
-            break;
-        }
+    for (otherNumber = 1; otherNumber <= 12; otherNumber++) {
+        answer = number * otherNumber;
+        printf("%d x %d = %d\n", number, otherNumber, answer);
     }
 }
 
 int main() {
-    srand(time(NULL));
-    int randomNum = rand() % 50 + 1;
 
-    playGame(randomNum);
+    spawnMultiplicationTable();
 
     return 0;
 }
